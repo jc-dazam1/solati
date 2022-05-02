@@ -7,6 +7,11 @@ const app = express();
  
 // Handling GET request
 app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname+'/index.html'));
+})
+
+// Handling GET request
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/chat.html'));
 })
  

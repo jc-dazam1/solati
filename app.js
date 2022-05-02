@@ -1,9 +1,12 @@
 // Requiring module
 const express = require('express');
 const path = require('path');
- 
-// Creating express object
 const app = express();
+const router = express.Router();
+
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+
  
 // Handling GET request
 app.get('/', (req, res) => {
@@ -15,9 +18,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/chat.html'));
 })
  
-// Port Number
-const PORT = process.env.PORT ||5000;
- 
-// Server Setup
-app.listen(PORT,console.log(
-  `Server started on port ${PORT}`));
+app.use("/", router);
+app.listen(process.env.port || 3000);
+
+console.log("Running at Port 3000");
